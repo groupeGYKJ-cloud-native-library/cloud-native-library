@@ -11,10 +11,6 @@ config = {
     'database': os.environ['DATABASE_SQL_AZURE'],
     'client_flags' : [mysql.connector.ClientFlag.SSL],
     'ssl_ca': os.environ['SSL_CA_SQL_AZURE']}
-
-conn = mysql.connector.connect(**config)
-cursor = conn.cursor(dictionary=True)
-
     
 def get_book(book):
     titre = (book,)
@@ -29,8 +25,13 @@ def get_book(book):
     return json.dumps(result)
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor(dictionary=True)
     book = req.params.get('book')
     logging.info(f"{book}")
+    conn.commit()
+    cursor.close()
+    conn.close()
     return func.HttpResponse(
         get_book(book),
         mimetype="application/json",
