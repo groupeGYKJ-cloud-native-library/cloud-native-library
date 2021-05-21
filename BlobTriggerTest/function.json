@@ -5,8 +5,8 @@
       "name": "myblob",
       "type": "blobTrigger",
       "direction": "in",
-      "path": "blob/{name}",
-      "connection": "stockagelivre_STORAGE"
+      "path": "julblob1/{name}",
+      "connection": "julblobstorage_STORAGE"
     }
   ]
 }

@@ -15,8 +15,8 @@ conn = mysql.connector.connect(**config)
 cursor = conn.cursor(dictionary=True)
 
 def insert_row(blob):
-    url = "https://stockagelivre.blob.core.windows.net/blob/"+blob
-    titre = blob.split(".")[0].replace('-', " ").replace("blob/", " ")
+    url = "https://stockagelivre.blob.core.windows.net/"+blob
+    titre = blob.split(".")[0].replace('-', " ").replace("blob/", "")
     cursor.execute("INSERT INTO epubs (titre, url) VALUES (%s, %s);", (titre, url))
 
 

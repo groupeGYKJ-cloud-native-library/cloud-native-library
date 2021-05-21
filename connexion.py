@@ -28,19 +28,10 @@ def see_all():
   # print(result)
 
 
-# Obtain connection string information from the portal
-# config = {
-#   'host':'equipe3.mysql.database.azure.com',
-#   'user':'equipe3@equipe3',
-#   'password':'Perrier!',
-#   'database':'<mydatabase>',
-#   'client_flags': [mysql.connector.ClientFlag.SSL],
-#   'ssl_ca': '/var/wwww/html/DigiCertGlobalRootG2.crt.pem'
-# }
 
 # Construct connection string
 try:
-   conn = mysql.connector.connect(user="equipe3@equipe3", password="Perrier!", host="equipe3.mysql.database.azure.com", port=3306, database="ebooks", ssl_ca="DigiCertGlobalRootG2.crt.pem", ssl_verify_cert=True) 
+   conn = mysql.connector.connect(user="juldb@julbd", password="", host="julbd.mysql.database.azure.com", port=3306, database="epubs", ssl_ca="", ssl_verify_cert=True) 
 #    conn = mysql.connector.connect(**config)
    print("Connection established")
 except mysql.connector.Error as err:
